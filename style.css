@@ -1,0 +1,210 @@
+:root {
+  --bg: #f6efe4;
+  --bg-accent: #ffd9a0;
+  --surface: rgba(255, 252, 247, 0.72);
+  --surface-strong: #fff9f1;
+  --text: #1c160f;
+  --muted: #645543;
+  --line: rgba(28, 22, 15, 0.12);
+  --primary: #c9572b;
+  --primary-strong: #a33f18;
+  --shadow: 0 20px 60px rgba(86, 52, 23, 0.15);
+}
+
+body.cool-mode {
+  --bg: #dcecff;
+  --bg-accent: #9bd1ff;
+  --surface: rgba(247, 251, 255, 0.72);
+  --surface-strong: #f5faff;
+  --text: #102033;
+  --muted: #4c6178;
+  --line: rgba(16, 32, 51, 0.12);
+  --primary: #135d9c;
+  --primary-strong: #0f4877;
+  --shadow: 0 20px 60px rgba(25, 58, 97, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, var(--bg-accent), transparent 28%),
+    linear-gradient(160deg, var(--bg) 0%, #fffdf8 100%);
+  transition: background 260ms ease, color 260ms ease;
+}
+
+.page-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
+.hero,
+.card,
+.spotlight {
+  backdrop-filter: blur(14px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  padding: clamp(2rem, 5vw, 5rem);
+  border-radius: 2rem;
+  margin-top: 1rem;
+  animation: rise-in 800ms ease both;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+h1,
+h2 {
+  font-family: "Fraunces", serif;
+  line-height: 0.95;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  max-width: 9ch;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.lede,
+.spotlight p,
+.card p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.lede {
+  max-width: 42rem;
+  margin: 1.5rem 0 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.95rem 1.4rem;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: var(--primary-strong);
+}
+
+.button-secondary {
+  background: var(--surface-strong);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  animation: rise-in 800ms ease both;
+}
+
+.card:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.card:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.card-number {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  color: var(--primary);
+}
+
+.spotlight {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: 2rem;
+  animation: rise-in 900ms ease both;
+  animation-delay: 300ms;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(100% - 1rem, 38rem);
+    padding-bottom: 2rem;
+  }
+
+  .card-grid,
+  .spotlight {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    border-radius: 1.5rem;
+  }
+}
